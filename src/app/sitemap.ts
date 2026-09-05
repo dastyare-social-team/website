@@ -1,11 +1,16 @@
 import type { MetadataRoute } from "next";
+import { headers } from "next/headers";
 import { routes } from "@/config/routes";
 import { isIndexingEnabled } from "@/lib/seo";
 
 const BASE_URL = "https://dastyare.social";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  if (!isIndexingEnabled()) {
+export const dynamic = "force-dynamic";
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const host = (await headers()).get("host") ?? undefined;
+
+  if (!isIndexingEnabled(host)) {
     return [];
   }
 
