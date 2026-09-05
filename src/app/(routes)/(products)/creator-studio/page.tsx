@@ -1,10 +1,10 @@
-"use client";
+import WindowLayout from "@/components/window-layout";
 
 const Page = () => {
   return (
-    <div>
-      <></>
-    </div>
+    <WindowLayout>
+      <>//</>
+    </WindowLayout>
   );
 };
 
