@@ -2,30 +2,52 @@
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useRef } from "react";
-import useWindowStore from "@/lib/hooks/use-window-store";
-import { INITIAL_Z_INDEX, WINDOW_CONFIG, WindowName } from "@/config/constants";
-import { cn } from "@/lib/utils";
+
+const DOCK_ITEMS = [
+  {
+    href: "/",
+    label: "Home",
+    tooltip: "dastyare.social",
+    src: "/icon.png",
+    padIcon: true,
+  },
+  { href: "/creator-studio", label: "CS —", tooltip: "CS — Creator Studio" },
+];
 
 const Dock = () => {
-  const { open_window, close_window, windows } = useWindowStore();
   const dockRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
 
   useGSAP(() => {
     const dock = dockRef.current;
     if (!dock) return;
+
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      return;
+    }
 
     const icons = dock.querySelectorAll<HTMLDivElement>(".dock-icon");
 
     const animateIcons = (mouseX: number) => {
       const { left } = dock.getBoundingClientRect();
 
-      icons.forEach((icon) => {
+      const stats = Array.from(icons, (icon) => {
         const { left: iconLeft, width } = icon.getBoundingClientRect();
         const center = iconLeft - left + width / 2;
         const distance = Math.abs(mouseX - center);
         const intensity = Math.exp(-(distance ** 2.5) / 20000);
+        return { icon, intensity };
+      });
 
+      const closest = stats.reduce((a, b) =>
+        b.intensity > a.intensity ? b : a,
+      );
+
+      stats.forEach(({ icon, intensity }) => {
         gsap.to(icon, {
           scale: 1 + 0.1 * intensity,
           y: -15 * intensity,
@@ -33,12 +55,13 @@ const Dock = () => {
           ease: "power1.out",
         });
 
-        // Animate tooltip
+        // Animate tooltip - only the closest icon can show its tooltip
+        const showTooltip = icon === closest.icon && closest.intensity > 0.3;
         const tooltip = icon.querySelector<HTMLSpanElement>(".dock-tooltip");
         if (tooltip) {
           gsap.to(tooltip, {
-            opacity: intensity > 0.3 ? 1 : 0,
-            y: intensity > 0.3 ? 0 : 4,
+            opacity: showTooltip ? 1 : 0,
+            y: showTooltip ? 0 : 4,
             duration: 0.15,
             ease: "power2.out",
           });
@@ -81,32 +104,21 @@ const Dock = () => {
     };
   }, []);
 
-  const toggleItem = (name: WindowName) => {
-    const win = windows.find((w) => w.name === name);
-    if (win && win.is_open) {
-      close_window(name);
-    } else {
-      open_window(name);
-    }
-  };
-
   return (
-    <div className="flex flex-1 w-full justify-center items-end">
+    <div className="flex shrink-0 w-full justify-center items-end">
       <div
         ref={dockRef}
-        style={{ zIndex: INITIAL_Z_INDEX * 100 }}
         className="sticky bottom-0 mb-5 bg-primary/3 rounded-3xl flex gap-x-2 px-3 py-3 border border-primary/5 select-none"
       >
-        {WINDOW_CONFIG.map((window) => {
-          const win = windows.find((w) => w.name === window.name);
-          const label = window.name
-            .split("_")
-            .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(" ");
+        {DOCK_ITEMS.map((item) => {
+          const active =
+            item.href === "/"
+              ? pathname === "/"
+              : pathname.startsWith(item.href);
 
           return (
             <div
-              key={window.name}
+              key={item.href}
               className="dock-icon flex flex-col justify-start items-center relative group"
             >
               {/* Tooltip */}
@@ -117,23 +129,36 @@ const Dock = () => {
                   transform: "translateX(-50%) translateY(4px)",
                 }}
               >
-                {label}
+                {item.tooltip}
               </span>
 
-              <button
-                type="button"
-                onClick={() => toggleItem(window.name)}
-                className="h-10 w-10 rounded-xl flex justify-center items-center cursor-pointer bg-primary/5 border border-primary/5 duration-900 overflow-hidden"
-                aria-label={window.name}
+              <Link
+                href={item.href}
+                className="h-10 w-10 rounded-xl flex justify-center items-center bg-primary/5 duration-900 overflow-hidden border border-primary/5"
+                aria-label={item.tooltip}
               >
-                {label}
-              </button>
+                {item.src ? (
+                  <Image
+                    src={item.src}
+                    alt={item.label}
+                    width={40}
+                    height={40}
+                    loading="lazy"
+                    className={
+                      item.padIcon ? "aspect-square p-1" : "aspect-square"
+                    }
+                  />
+                ) : (
+                  <span className="whitespace-nowrap text-xs">
+                    {item.label}
+                  </span>
+                )}
+              </Link>
 
               <div
-                className={cn(
-                  "rounded-full w-1 h-1 mt-1 bg-primary/10 border border-primary/20 group-hover:border-primary/40",
-                  win?.is_open && "border-primary/40 bg-primary/40",
-                )}
+                className={`rounded-full w-1 h-1 mt-1 bg-primary/10 border border-primary/20 group-hover:border-primary/40 ${
+                  active ? "border-primary/40 bg-primary/40" : ""
+                }`}
               />
             </div>
           );
