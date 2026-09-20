@@ -6,11 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useRef } from "react";
+import { cn } from "@/lib/utils";
 
 const DOCK_ITEMS = [
   {
     href: "/",
-    label: "Home",
+    label: "Home Page",
     tooltip: "dastyare.social",
     src: "/icon.png",
     padIcon: true,
@@ -108,7 +109,7 @@ const Dock = () => {
     <div className="flex shrink-0 w-full justify-center items-end">
       <div
         ref={dockRef}
-        className="sticky bottom-0 mb-5 bg-primary/3 rounded-3xl flex gap-x-2 px-3 py-3 border border-primary/5 select-none"
+        className="sticky bottom-0 mb-5 z-50 bg-primary/3 rounded-3xl flex gap-x-2 px-3 py-3 border border-primary/5 select-none"
       >
         {DOCK_ITEMS.map((item) => {
           const active =
@@ -123,7 +124,7 @@ const Dock = () => {
             >
               {/* Tooltip */}
               <span
-                className="dock-tooltip pointer-events-none absolute -top-5.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full backdrop-blur-sm tracking-tighter border border-primary/5 px-1 text-xs"
+                className="dock-tooltip pointer-events-none absolute z-[60] -top-5.5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full backdrop-blur-sm tracking-tighter border border-primary/5 px-1 text-xs"
                 style={{
                   opacity: 0,
                   transform: "translateX(-50%) translateY(4px)",
@@ -134,7 +135,10 @@ const Dock = () => {
 
               <Link
                 href={item.href}
-                className="h-10 w-10 rounded-xl flex justify-center items-center bg-primary/5 duration-900 overflow-hidden border border-primary/5"
+                className={cn(
+                  "h-10 w-10 rounded-xl flex justify-center items-center bg-primary/5 duration-900 overflow-hidden border border-primary/5",
+                  active && "border-primary/15",
+                )}
                 aria-label={item.tooltip}
               >
                 {item.src ? (
