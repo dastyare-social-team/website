@@ -2,6 +2,7 @@
 
 import RegistrationForm from "@/components/registration-form";
 import SectionWrapper from "@/components/section-wrapper";
+import Image from "next/image";
 
 const LandingProblemSectionV1 = ({ webhookUrl }: { webhookUrl?: string }) => {
   return (
@@ -37,14 +38,13 @@ const LandingProblemSectionV1 = ({ webhookUrl }: { webhookUrl?: string }) => {
         onContextMenu={(e) => e.preventDefault()}
         className="aspect-3/4 flex-1 bg-primary/[1%] border-2 border-primary/5"
       >
-        {/* TODO(home-problem): add supporting visual once assets are ready.
         <Image
-          width={588}
-          height={588}
+          width={896}
+          height={1200}
           src="/images/sections/home-problem.webp"
-          alt=""
+          alt="Personal brand buried in a noisy general feed"
           className="px-1 py-1 aspect-3/4 object-cover"
-        /> */}
+        />
       </div>
     </SectionWrapper>
   );

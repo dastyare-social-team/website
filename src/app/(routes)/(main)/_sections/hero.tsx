@@ -2,6 +2,7 @@
 
 import RegistrationForm from "@/components/registration-form";
 import SectionWrapper from "@/components/section-wrapper";
+import Image from "next/image";
 
 const value_props = [
   "Connect directly with other personal brands, founders, and professionals in your field",
@@ -51,16 +52,14 @@ const LandingHeroSectionV1 = ({ webhookUrl }: { webhookUrl?: string }) => {
         onContextMenu={(e) => e.preventDefault()}
         className="aspect-3/4 flex-1 bg-primary/[1%] border-2 border-primary/5"
       >
-        {/* TODO(home-hero): add comic-style illustration (founder, manager,
-            freelancer connecting, matching house style) once assets are ready.
         <Image
-          width={588}
-          height={588}
+          width={896}
+          height={1200}
           src="/images/sections/home-hero.webp"
           loading="eager"
           alt="Personal brands connecting on Dastyare Social"
           className="px-1 py-1 aspect-3/4 object-cover"
-        /> */}
+        />
       </div>
     </SectionWrapper>
   );

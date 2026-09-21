@@ -1,10 +1,22 @@
+import { cookies } from "next/headers";
 import Dock from "@/components/dock";
 import { PostHogProvider } from "@/components/posthog-provider";
 import { ConsentBanner } from "@/components/consent-banner";
+import { CONSENT_COOKIE_NAME } from "@/lib/consent";
 import RoutesShell from "@/components/routes-shell";
 import React from "react";
 
-export default function layout({ children }: { children: React.ReactNode }) {
+export default async function layout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const cookieStore = await cookies();
+  const initialConsent = cookieStore.get(CONSENT_COOKIE_NAME)?.value as
+    | "granted"
+    | "denied"
+    | undefined;
+
   return (
     <PostHogProvider>
       <div className="flex flex-col h-dvh">
@@ -15,7 +27,7 @@ export default function layout({ children }: { children: React.ReactNode }) {
         </div>
 
         <Dock />
-        <ConsentBanner />
+        <ConsentBanner initialConsent={initialConsent} />
       </div>
     </PostHogProvider>
   );

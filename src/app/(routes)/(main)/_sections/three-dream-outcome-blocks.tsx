@@ -2,6 +2,7 @@
 
 import RegistrationForm from "@/components/registration-form";
 import SectionWrapper from "@/components/section-wrapper";
+import Image from "next/image";
 
 const LandingThreeDreamOutcomeBlocksSectionV1 = ({
   webhookUrl,
@@ -40,14 +41,13 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = ({
           onContextMenu={(e) => e.preventDefault()}
           className="aspect-3/4 flex-1 bg-primary/[1%] border-2 border-primary/5"
         >
-          {/* TODO(home-value-1): add supporting visual once assets are ready.
           <Image
-            width={588}
-            height={588}
+            width={896}
+            height={1200}
             src="/images/sections/home-value-1.webp"
-            alt=""
+            alt="Connect with founders, professionals, and personal brands"
             className="px-1 py-1 aspect-3/4 object-cover"
-          /> */}
+          />
         </div>
       </SectionWrapper>
 
@@ -70,14 +70,13 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = ({
           onContextMenu={(e) => e.preventDefault()}
           className="aspect-3/4 flex-1 bg-primary/[1%] border-2 border-primary/5"
         >
-          {/* TODO(home-value-2): add supporting visual once assets are ready.
           <Image
-            width={588}
-            height={588}
+            width={896}
+            height={1200}
             src="/images/sections/home-value-2.webp"
-            alt=""
+            alt="Discovery that gets personal brands found on Google and AI search"
             className="px-1 py-1 aspect-3/4 object-cover"
-          /> */}
+          />
         </div>
       </SectionWrapper>
 
@@ -100,14 +99,13 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = ({
           onContextMenu={(e) => e.preventDefault()}
           className="aspect-3/4 flex-1 bg-primary/[1%] border-2 border-primary/5"
         >
-          {/* TODO(home-value-3): add supporting visual once assets are ready.
           <Image
-            width={588}
-            height={588}
+            width={896}
+            height={1200}
             src="/images/sections/home-value-3.webp"
-            alt=""
+            alt="Turn connections into clients, collaborators, and opportunities"
             className="px-1 py-1 aspect-3/4 object-cover"
-          /> */}
+          />
         </div>
       </SectionWrapper>
     </>
