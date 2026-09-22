@@ -25,7 +25,7 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = ({
               Find the people who actually matter
             </p>
             <h2>
-              Connect with founders, professionals, and other personal brands
+              Connect With Founders, Professionals, and Other Personal Brands
             </h2>
             <p>
               Search and discovery built around personal brands specifically —
@@ -55,7 +55,7 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = ({
         <div className="flex flex-col flex-1 gap-y-8 items-start">
           <div className="flex flex-col gap-y-1.5">
             <p className="text-[20px]">Get found by the right person</p>
-            <h2>Discovery that actually works for this niche</h2>
+            <h2>Discovery That Actually Works for This Niche</h2>
             <p>
               Indexed on Google, ready for AI search, and built so the
               algorithm favors personal brands instead of burying them under
@@ -84,7 +84,7 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = ({
         <div className="flex flex-col flex-1 gap-y-8 items-start">
           <div className="flex flex-col gap-y-1.5">
             <p className="text-[20px]">Turn connections into outcomes</p>
-            <h2>Not just networking — actual outcomes</h2>
+            <h2>Not Just Networking — Actual Outcomes</h2>
             <p>
               Find your next client, collaborator, mentor, or job — the App is
               built to connect you with people looking for exactly what you

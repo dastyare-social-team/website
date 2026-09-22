@@ -71,9 +71,9 @@ const LandingWhyThisWorkshopIsDifferentSectionV1 = () => {
       <div className="flex flex-col gap-y-8 items-center">
         <div className="flex flex-col max-w-xl gap-y-2.5 items-center">
           <h2 className="text-center">
-            Not just{" "}
+            Not Just{" "}
             <span className="text-primary bg-primary/5">
-              another way to post online
+              Another Way to Post Online
             </span>
           </h2>
         </div>

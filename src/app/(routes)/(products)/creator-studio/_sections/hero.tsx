@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/button";
 import SectionWrapper from "@/components/section-wrapper";
+import Image from "next/image";
 import { capture } from "@/lib/posthog";
 import { GITHUB_REPO_URL } from "@/lib/constants";
 
@@ -19,9 +20,11 @@ const LandingHeroSectionV1 = () => {
       <div className="flex flex-col flex-1 gap-y-8">
         <div className="flex flex-col gap-y-1.5">
           <h2>
-            Get free of the algorithm.
-            <span className="text-primary">&nbsp;Focus on getting leads </span>
-            and making money.
+            Get Free of the Algorithm
+            <span className="text-primary">
+              &nbsp;— Focus on Getting Leads{" "}
+            </span>
+            and Making Money
           </h2>
           <div className="flex flex-col gap-y-1">
             Every post you publish should work for you — not pad someone
@@ -61,16 +64,14 @@ const LandingHeroSectionV1 = () => {
         onContextMenu={(e) => e.preventDefault()}
         className="aspect-3/4 flex-1 bg-primary/[1%] border-2 border-primary/5"
       >
-        {/* TODO(creator-studio-hero): add real product screenshot (channel-style
-            post feed or shorts/video explore view) once assets are ready.
-            <Image
-              width={588}
-              height={588}
-              src="/images/sections/creator-studio-hero.webp"
-              loading="eager"
-              alt="DS-CS Creator Studio post feed"
-              className="px-1 py-1 aspect-3/4 object-cover"
-            /> */}
+        <Image
+          width={896}
+          height={1200}
+          src="/images/sections/creator-studio-hero.webp"
+          loading="eager"
+          alt="DS-CS Creator Studio post feed"
+          className="px-1 py-1 aspect-3/4 object-cover"
+        />
       </div>
     </SectionWrapper>
   );

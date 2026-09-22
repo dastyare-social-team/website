@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/button";
 import SectionWrapper from "@/components/section-wrapper";
+import Image from "next/image";
 import { capture } from "@/lib/posthog";
 import { GITHUB_REPO_URL } from "@/lib/constants";
 
@@ -16,7 +17,7 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = () => {
             <p className="text-[20px]">
               Show up wherever Your Audience is Actually Looking
             </p>
-            <h2>Publish in Whatever Form Actually Fits what You&apos;re Saying</h2>
+            <h2>Publish in Whatever Form Actually Fits What You&apos;re Saying</h2>
             <p>
               Text, image, video, voice, or file — each one published in the
               format that reads best, not squeezed into one mixed-up post trying
@@ -39,14 +40,13 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = () => {
           onContextMenu={(e) => e.preventDefault()}
           className="aspect-3/4 flex-1 bg-primary/[1%] border-2 border-primary/5"
         >
-          {/* TODO(creator-studio-benefit-1): add real product screenshot for content formats once assets are ready.
           <Image
-            width={588}
-            height={588}
+            width={896}
+            height={1200}
             src="/images/sections/creator-studio-benefit-1.webp"
-            alt=""
+            alt="Publish text, image, video, voice, or file in the format that fits"
             className="px-1 py-1 aspect-3/4 object-cover"
-          /> */}
+          />
         </div>
       </SectionWrapper>
 
@@ -56,7 +56,7 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = () => {
             <p className="text-[20px]">
               Get Found by Search, and by AI tools People Ask instead
             </p>
-            <h2>Ready For How People Actually Look things up Now</h2>
+            <h2>Ready for How People Actually Look Things Up Now</h2>
             <p>
               More People are Asking AI for Recommendations instead of scrolling
               a feed. DS-CS makes sure Your Content is ready for that shift
@@ -80,14 +80,13 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = () => {
           onContextMenu={(e) => e.preventDefault()}
           className="aspect-3/4 flex-1 bg-primary/[1%] border-2 border-primary/5"
         >
-          {/* TODO(creator-studio-benefit-2): add real product screenshot for search/AI discovery once assets are ready.
           <Image
-            width={588}
-            height={588}
+            width={896}
+            height={1200}
             src="/images/sections/creator-studio-benefit-2.webp"
-            alt=""
+            alt="Content indexed for search engines and AI discovery"
             className="px-1 py-1 aspect-3/4 object-cover"
-          /> */}
+          />
         </div>
       </SectionWrapper>
 
@@ -95,7 +94,7 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = () => {
         <div className="flex flex-col flex-1 gap-y-8 items-start">
           <div className="flex flex-col gap-y-1.5">
             <p className="text-[20px]">Nobody can Take this down but You</p>
-            <h2>No Policy Change can touch What You&apos;ve built</h2>
+            <h2>No Policy Change Can Touch What You&apos;ve Built</h2>
             <p>
               No surprise suspension, no algorithm update, no policy change can
               reach it — it runs on your own server, under your control, on
@@ -118,14 +117,13 @@ const LandingThreeDreamOutcomeBlocksSectionV1 = () => {
           onContextMenu={(e) => e.preventDefault()}
           className="aspect-3/4 flex-1 bg-primary/[1%] border-2 border-primary/5"
         >
-          {/* TODO(creator-studio-benefit-3): add real product screenshot for self-hosting control once assets are ready.
           <Image
-            width={588}
-            height={588}
+            width={896}
+            height={1200}
             src="/images/sections/creator-studio-benefit-3.webp"
-            alt=""
+            alt="Self-hosted content under your own control"
             className="px-1 py-1 aspect-3/4 object-cover"
-          /> */}
+          />
         </div>
       </SectionWrapper>
     </>

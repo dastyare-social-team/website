@@ -12,10 +12,12 @@ const LandingHowItWorksSectionV1 = () => {
   return (
     <SectionWrapper className="justify-center items-center">
       <div className="flex flex-col gap-y-8 items-center">
-        <div className="flex flex-col max-w-xl gap-y-2.5 items-center">
+        <div className="flex flex-col max-w-2xl gap-y-2.5 items-center">
           <h2 className="text-center">
-            Getting{" "}
-            <span className="text-primary bg-primary/5">started</span>
+            From Docker Deploy{" "}
+            <span className="text-primary bg-primary/5">
+              to Your First Published Post
+            </span>
           </h2>
         </div>
 

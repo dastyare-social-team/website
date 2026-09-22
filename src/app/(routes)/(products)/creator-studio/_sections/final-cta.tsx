@@ -12,11 +12,11 @@ const LandingFinalCTASectionV1 = () => {
     <SectionWrapper className="justify-center items-center">
       <div className="max-w-xl text-center pt-5 flex flex-col gap-y-2.5 items-center">
         <h3>
-          Stop building
+          Stop Building
           <span className="text-primary">
-            &nbsp;someone else&apos;s platform. Start building
+            &nbsp;Someone Else&apos;s Platform. Start Building
           </span>
-          &nbsp;your own reach.
+          &nbsp;Your Own Reach.
         </h3>
         <p>
           No license fee, no lock-in, no algorithm standing between your posts

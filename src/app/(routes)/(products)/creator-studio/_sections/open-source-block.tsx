@@ -13,9 +13,9 @@ const LandingOpenSourceSectionV1 = () => {
       <div className="flex flex-col gap-y-8 max-w-xl items-center">
         <div className="flex flex-col gap-y-1.5 items-center">
           <h2 className="text-center">
-            Nothing hidden,{" "}
+            Nothing Hidden,{" "}
             <span className="text-primary bg-primary/5">
-              nothing that turns into a bill later
+              Nothing That Turns Into a Bill Later
             </span>
           </h2>
           <p className="text-center">

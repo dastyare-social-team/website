@@ -12,9 +12,9 @@ const LandingFinalCTASectionV1 = ({
     <SectionWrapper className="justify-center items-center">
       <div className="max-w-xl text-center pt-5 flex flex-col gap-y-2.5 items-center">
         <h3>
-          Be the first to know{" "}
+          Be the First to Know{" "}
           <span className="text-primary">
-            when you can stop getting lost in someone else&apos;s feed.
+            When You Can Stop Getting Lost in Someone Else&apos;s Feed.
           </span>
         </h3>
         <p>

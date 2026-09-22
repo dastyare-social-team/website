@@ -17,9 +17,9 @@ const LandingHeroSectionV1 = ({ webhookUrl }: { webhookUrl?: string }) => {
         <div className="flex flex-col gap-y-1.5">
           <p className="text-[20px]">COMING SOON</p>
           <h2>
-            Connect with other personal brands{" "}
+            Connect With Other Personal Brands{" "}
             <span className="text-primary">
-              — founders, professionals, anyone building a name for themselves
+              — Founders, Professionals, Anyone Building a Name for Themselves
             </span>
           </h2>
           <p>

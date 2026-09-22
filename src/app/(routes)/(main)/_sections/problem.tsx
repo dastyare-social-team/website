@@ -10,9 +10,9 @@ const LandingProblemSectionV1 = ({ webhookUrl }: { webhookUrl?: string }) => {
       <div className="flex flex-col flex-1 gap-y-8 items-start">
         <div className="flex flex-col gap-y-1.5">
           <h2>
-            Every other platform{" "}
+            Every Other Platform{" "}
             <span className="text-primary">
-              buries you next to everything else
+              Buries You Next to Everything Else
             </span>
           </h2>
           <p>

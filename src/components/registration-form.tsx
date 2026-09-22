@@ -7,7 +7,7 @@ import { Input } from "@/components/input";
 import { capture, captureException, identify } from "@/lib/posthog";
 import { cn } from "@/lib/utils";
 import { useRouter, usePathname } from "next/navigation";
-import { useState, type KeyboardEvent } from "react";
+import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 
 const sanitizeText = (value: string) =>
   value
@@ -110,12 +110,35 @@ const RegistrationForm = ({
 }) => {
   const router = useRouter();
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
   const [name, set_name] = useState("");
   const [email, set_email] = useState("");
   const [phone, set_phone] = useState("");
   const [show_phone_input, set_show_phone_input] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [succeeded, setSucceeded] = useState(false);
+  const closeTimer = useRef<number | null>(null);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current !== null) {
+        window.clearTimeout(closeTimer.current);
+      }
+    };
+  }, []);
+
+  const handleOpenChange = (next: boolean) => {
+    setOpen(next);
+    if (!next) {
+      if (closeTimer.current !== null) {
+        window.clearTimeout(closeTimer.current);
+        closeTimer.current = null;
+      }
+      setError(null);
+      setSucceeded(false);
+    }
+  };
 
   const routeVariant = pathname?.includes("/v2") ? "v2" : "v1";
 
@@ -159,7 +182,7 @@ const RegistrationForm = ({
   };
 
   const handleSubmit = async () => {
-    if (loading) {
+    if (loading || succeeded) {
       return;
     }
 
@@ -253,6 +276,14 @@ const RegistrationForm = ({
         registered: true,
       });
 
+      if (emailOnly) {
+        setSucceeded(true);
+        closeTimer.current = window.setTimeout(() => {
+          setOpen(false);
+        }, 1800);
+        return;
+      }
+
       router.push(`/confirmation/${routeVariant}`);
     } catch (error) {
       captureException(error, {
@@ -282,7 +313,7 @@ const RegistrationForm = ({
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
         <div>
           <Button
@@ -406,7 +437,7 @@ const RegistrationForm = ({
               <Button
                 type="submit"
                 variant="primary"
-                disabled={loading}
+                disabled={loading || succeeded}
                 onClick={() => {
                   if (show_phone_input && !emailOnly) {
                     void handleSubmit();
@@ -419,7 +450,9 @@ const RegistrationForm = ({
                 {emailOnly
                   ? loading
                     ? "sending —"
-                    : "Notify Me When It Launches"
+                    : succeeded
+                      ? "You're on the list —"
+                      : "Notify Me When It Launches"
                   : show_phone_input
                     ? "Save My Seat — Now"
                     : "continue —"}

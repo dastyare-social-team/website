@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/button";
 import SectionWrapper from "@/components/section-wrapper";
+import Image from "next/image";
 import { capture } from "@/lib/posthog";
 import { GITHUB_REPO_URL } from "@/lib/constants";
 
@@ -13,7 +14,7 @@ const LandingProblemSectionV1 = () => {
       <div className="flex flex-col flex-1 gap-y-8 items-start">
         <div className="flex flex-col gap-y-1.5">
           <h2>
-            Every Post You Publish should be{" "}
+            Every Post You Publish Should Be{" "}
             <span className="text-primary">
               Building Your Business — Not Padding
             </span>{" "}
@@ -43,14 +44,13 @@ const LandingProblemSectionV1 = () => {
         onContextMenu={(e) => e.preventDefault()}
         className="aspect-3/4 flex-1 bg-primary/[1%] border-2 border-primary/5"
       >
-        {/* TODO(creator-studio-problem): add supporting visual once assets are ready.
         <Image
-          width={588}
-          height={588}
+          width={896}
+          height={1200}
           src="/images/sections/creator-studio-problem.webp"
-          alt=""
+          alt="Reach lost to algorithm updates on platforms you don't own"
           className="px-1 py-1 aspect-3/4 object-cover"
-        /> */}
+        />
       </div>
     </SectionWrapper>
   );
