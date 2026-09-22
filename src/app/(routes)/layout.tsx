@@ -1,6 +1,7 @@
 import { cookies } from "next/headers";
 import Dock from "@/components/dock";
 import { PostHogProvider } from "@/components/posthog-provider";
+import { PageAnalytics } from "@/components/page-analytics";
 import { ConsentBanner } from "@/components/consent-banner";
 import { CONSENT_COOKIE_NAME } from "@/lib/consent";
 import RoutesShell from "@/components/routes-shell";
@@ -19,6 +20,7 @@ export default async function layout({
 
   return (
     <PostHogProvider>
+      <PageAnalytics />
       <div className="flex flex-col h-dvh">
         <div className="px-5 pt-5 pb-3.5 sm:px-7.5 sm:pt-7.5 sm:pb-4.5 flex-1 min-h-0 outline-0">
           <RoutesShell webhookUrl={process.env.WEBHOOK_URL}>
